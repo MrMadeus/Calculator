@@ -1,7 +1,5 @@
-import tkinter as tk
+from tkinter import *
 
-def summ():
-    pass
+root = Tk()
 
-def minus():
-    pass
+
