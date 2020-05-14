@@ -8,8 +8,13 @@ class OperationButton:
 
 root = Tk()
 
-l = Label(bg='black', fg='white', width=40)
+WorkField = Entry(bg='white', fg='black', width=40)
+def restart():
+    WorkField.delete(0, END)
 
-l.pack()
+C = Button(text="C", width=3, height=3, command=restart)
+
+WorkField.pack()
+C.pack()
 
 root.mainloop()
