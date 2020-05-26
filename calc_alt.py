@@ -17,6 +17,16 @@ class NumButt:
     def input(self, event):
         WorkField.insert(END, str(self.n))
 
+class OperButt:
+    def __init__(self, s, place):
+        self.s = s
+        self.place = place
+        self.butt = Button(text=str(self.s), width=3, height=3)
+        self.butt.bind('<Button-1>', self.input)
+        self.butt.grid(row=self.place[0], column=self.place[1])
+    def input(self, event):
+        WorkField.insert(END, self.s)
+
 root = Tk()
 
 WorkField = Entry(bg='white', fg='black', width=40, justify=RIGHT)
@@ -30,6 +40,9 @@ n = []
 
 for i in range(10):
     n.append(NumButt(i))
+
+Summ = OperButt('+', (2, 4))
+Mult = OperButt('*', (3, 4))
 
 WorkField.grid(row=0, column=0)
 C.grid(row=1, column=4)
