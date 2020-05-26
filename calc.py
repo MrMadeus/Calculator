@@ -2,10 +2,11 @@ from tkinter import *
 
 root = Tk()
 
-WorkField = Entry(bg='white', fg='black', width=40)
+WorkField = Entry(bg='white', fg='black', width=40, justify=RIGHT)
 def restart():
+    '''function of resart working field'''
     WorkField.delete(0, END)
-def insert(num):
+def insert(event, num):
     WorkField.insert(END, str(num))
 
 C = Button(text="C", width=3, height=3, command=restart)
@@ -19,9 +20,9 @@ for i in range(10):
     elif (i%3) == 0:
         n[i].grid(row=i//3, column=3)
     elif (i%3) == 1:
-        n[i].grid(row=1+(i//3), column=2)
-    elif (i%3) == 2:
         n[i].grid(row=1+(i//3), column=1)
+    elif (i%3) == 2:
+        n[i].grid(row=1+(i//3), column=2)
 
 
 n[0].bind('<Button-1>', insert(0))
