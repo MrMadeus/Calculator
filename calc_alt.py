@@ -1,12 +1,17 @@
 from tkinter import *
 
+global w, h
+
+w = 4
+h = 4
+
 class NumButt:
     def __init__(self, n):
         self.n = n
-        self.butt = Button(text=str(self.n), width=3, height=3)
+        self.butt = Button(text=str(self.n), width=w, height=h)
         self.butt.bind('<Button-1>', self.input)
         if self.n == 0:
-            self.butt.grid(row=2, column=4)
+            self.butt.grid(row=4, column=1)
         elif (self.n % 3) == 0:
             self.butt.grid(row=i//3, column=3)
         elif (self.n % 3) == 1:
@@ -21,7 +26,7 @@ class OperButt:
     def __init__(self, s, place):
         self.s = s
         self.place = place
-        self.butt = Button(text=str(self.s), width=3, height=3)
+        self.butt = Button(text=str(self.s), width=w, height=h)
         self.butt.bind('<Button-1>', self.input)
         self.butt.grid(row=self.place[0], column=self.place[1])
     def input(self, event):
@@ -29,12 +34,16 @@ class OperButt:
 
 root = Tk()
 
-WorkField = Entry(bg='white', fg='black', width=40, justify=RIGHT)
+WorkField = Entry(bg='white', fg='black', width=30, justify=RIGHT)
 def restart():
     '''function of resart working field'''
     WorkField.delete(0, END)
+def calculate():
+    '''function to get the result'''
+    pass
 
-C = Button(text="C", width=3, height=3, command=restart)
+C = Button(text="C", width=w, height=h, command=restart)
+Calc = Button(text="=", width=w, height=h, command=calculate)
 
 n = []
 
@@ -44,8 +53,9 @@ for i in range(10):
 Summ = OperButt('+', (2, 4))
 Mult = OperButt('*', (3, 4))
 
-WorkField.grid(row=0, column=0)
+WorkField.grid(row=0, column=0, columnspan=12)
 C.grid(row=1, column=4)
+Calc.grid(row=4, column=4)
 
 root.mainloop()
-                   
+
