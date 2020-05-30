@@ -1,9 +1,14 @@
 from tkinter import *
+#import re - can be used in FindRes-function
 
 global w, h
 
 w = 4
 h = 4
+
+def FindRes(e):
+    pass
+
 
 class NumButt:
     def __init__(self, n):
@@ -40,7 +45,9 @@ def restart():
     WorkField.delete(0, END)
 def calculate():
     '''function to get the result'''
-    pass
+    TaskStr = WorkField.get()
+    WorkField.delete(0, END)
+    WorkField.insert(END, FindRes(TaskStr))
 
 C = Button(text="C", width=w, height=h, command=restart)
 Calc = Button(text="=", width=w, height=h, command=calculate)
