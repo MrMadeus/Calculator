@@ -1,5 +1,5 @@
 from tkinter import *
-#import re - can be used in FindRes-function
+import re
 
 global w, h
 
@@ -7,7 +7,8 @@ w = 4
 h = 4
 
 def FindRes(e):
-    pass
+    numbers = re.findall('\d+', e)
+    opers = re.findall([+, -, *, /]+, e) #need to check up
 
 
 class NumButt:

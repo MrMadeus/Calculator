@@ -1,8 +1,8 @@
 import re
 
-e = '3254+155145*3462'
+e = r'3254+155145*3462'
 
-i = re.findall(r'\d*', e)
+i = re.findall('\d+', e)
 
 for s in i:
     print(s)
