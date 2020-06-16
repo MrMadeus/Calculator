@@ -1,15 +1,12 @@
 from tkinter import *
 import re
 
-global w, h
+global w, h, SetNum, SetOper
 
 w = 4
 h = 4
-
-def FindRes(e):
-    numbers = re.findall('\d+', e)
-    opers = re.findall([+, -, *, /]+, e) #need to check up
-
+SetNum = None
+SetOper = ''
 
 class NumButt:
     def __init__(self, n):
@@ -33,9 +30,15 @@ class OperButt:
         self.s = s
         self.place = place
         self.butt = Button(text=str(self.s), width=w, height=h)
-        self.butt.bind('<Button-1>', self.input)
+        self.butt.bind('<Button-1>', self.operation)
         self.butt.grid(row=self.place[0], column=self.place[1])
-    def input(self, event):
+    def operation(self, event):
+        if SetNum == None:
+            SetNum = int(WorkField.get())
+            SetOper = self.s
+            WorkField.delete(0, END)
+        else:
+            calculate()
         WorkField.insert(END, self.s)
 
 root = Tk()
@@ -44,11 +47,14 @@ WorkField = Entry(bg='white', fg='black', width=30, justify=RIGHT)
 def restart():
     '''function of resart working field'''
     WorkField.delete(0, END)
+    SerNum = None
+    SetOper = ''
 def calculate():
     '''function to get the result'''
-    TaskStr = WorkField.get()
-    WorkField.delete(0, END)
-    WorkField.insert(END, FindRes(TaskStr))
+    pass
+    #TaskStr = WorkField.get()
+    #WorkField.delete(0, END)
+    #WorkField.insert(END, FindRes(TaskStr))
 
 C = Button(text="C", width=w, height=h, command=restart)
 Calc = Button(text="=", width=w, height=h, command=calculate)
