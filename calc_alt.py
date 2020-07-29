@@ -5,7 +5,7 @@ global w, h, SetNum, SetOper
 
 w = 4
 h = 4
-SetNum = None
+SetNum = []
 SetOper = ''
 
 class NumButt:
@@ -33,13 +33,15 @@ class OperButt:
         self.butt.bind('<Button-1>', self.operation)
         self.butt.grid(row=self.place[0], column=self.place[1])
     def operation(self, event):
-        if SetNum == None:
-            SetNum = int(WorkField.get())
+        global SetNum, SetOper
+        if SetNum == []:
+            SetNum.append(int(WorkField.get()))
             SetOper = self.s
             WorkField.delete(0, END)
         else:
+            SetNum.append(int(WorkField.get()))
+            WorkField.delete(0, END)
             calculate()
-        WorkField.insert(END, self.s)
 
 root = Tk()
 
@@ -51,7 +53,8 @@ def restart():
     SetOper = ''
 def calculate():
     '''function to get the result'''
-    pass
+    print(SetNum)
+    SetNum = []
     #TaskStr = WorkField.get()
     #WorkField.delete(0, END)
     #WorkField.insert(END, FindRes(TaskStr))
